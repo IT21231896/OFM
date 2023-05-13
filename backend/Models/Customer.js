@@ -5,25 +5,32 @@ const { Schema } = mongoose;
 //new Schema called - 'customerSchema'
 let customerSchema = new Schema({
     name: {
-        type:String
+        type:String,
+        required: true
     },
     email: {
-        type:String
+        type:String,
+        required: true
     },
     custid: {
-        type:String
+        type:String,
+        required: true
     },
     mobileno: {
-        type:Number
+        type:Number,
+        required: true
     },
     username: {
-        type:String
+        type:String,
+        required: true
     },
     password: {
-        type:String
+        type:String,
+        required: true
     },
     re_password: {
-        type:String
+        type:String,
+        required: true
     }
 
 },{

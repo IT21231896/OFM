@@ -73,7 +73,7 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-
+/*
 // Login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -89,7 +89,7 @@ router.post("/login", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
-});
+});*/
 
 
 module.exports = router;

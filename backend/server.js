@@ -1,3 +1,49 @@
+/*
+//for use mongo Db Atles- online database
+// import the necessary libraries
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+const port = 8000;
+
+// use cors
+app.use(cors());
+
+// use body-parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// define routes Cusotomer
+const customerdata = require('../backend/routes/custroute');
+app.use('/cust', customerdata);
+
+// define routes Order
+const orderdata = require('../backend/routes/orderroute');
+app.use('/order', orderdata);
+
+// define routes Supplier
+const supplierdata = require('../backend/routes/supplierroute');
+app.use('/supplier', supplierdata);
+
+// connect to MongoDB Atlas
+mongoose.connect(
+  'mongodb+srv://it21231896:mohamedkijan321@cluster0.rln7ptv.mongodb.net/',
+  { useNewUrlParser: true, useUnifiedTopology: true }
+).then(() => {
+  console.log('Connected to MongoDB Atlas');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB Atlas', error);
+});
+
+// start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});*/
+
+//for mongo db Local connection(PC installed database)
 //Express js imported
 const express = require('express') //express library import
 
@@ -11,9 +57,20 @@ const port = 8000
 //CORS package
 const cors = require('cors');
 
-//Express data
+//Express data for customer
 const customerdata = require('../backend/routes/custroute')
 
+//for order
+const orderdata = require('../backend/routes/orderroute')
+
+//for suplier
+const supplierdata = require('../backend/routes/supplierroute')
+
+//for Employee
+const employeeData = require('../backend/routes/employeeroute')
+
+//for Bill details
+const billData = require('../backend/routes/Billroute')
 
 
 //db connection
@@ -38,9 +95,21 @@ app.use(bodyParser.urlencoded({
 //use cors
 app.use(cors())
 
+//customer
 //the url we need - 'localhost:8000/cust/create-customer'    so,
 app.use('/cust',customerdata)
 
+//order
+app.use('/order',orderdata )
+
+//supplier
+app.use('/supplier',supplierdata)
+
+//employee
+app.use('/employee',employeeData)
+
+//Bill
+app.use('/bill',billData)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
